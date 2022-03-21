@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="english" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Tags - Prova</title>
+    <title>Blog - Prova</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,7 +10,8 @@
 
 
 
-        <meta name="author" content="Io" />
+    <meta name="author" content="Io" />
+    <meta name="keywords" content="Blog" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="Prova" />
@@ -51,7 +52,7 @@ Prova            </a>
                          <li><a href="/pages/chi-sono.html">
                              Chi sono
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
             </ul>
@@ -69,35 +70,30 @@ Prova            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <section id="tags">
-        <h1>Tags for Prova</h1>
-        <div class="panel-group" id="accordion">            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pelican">pelican <span class="badge pull-right">1</span></a>
-                    </h4>
+            <article>
+                <h2><a href="/my-first-review.html">My First Review</a></h2>
+                <div class="summary"><p>Following is a review of my favorite mechanical keyboard.</p>
+                    <a class="btn btn-default btn-xs" href="/my-first-review.html">more ...</a>
                 </div>
-                <div id="collapse-pelican" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p><span class="categories-timestamp"><time datetime="2010-12-03T10:20:00+01:00">ven 03 dicembre 2010</time></span> <a href="/my-super-post.html">My super title</a></p>
-                    </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/my-super-post.html">My super title</a></h2>
+                <div class="summary"><p>Short version for index and feeds</p>
+                    <a class="btn btn-default btn-xs" href="/my-super-post.html">more ...</a>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-publishing">publishing <span class="badge pull-right">1</span></a>
-                    </h4>
-                </div>
-                <div id="collapse-publishing" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p><span class="categories-timestamp"><time datetime="2010-12-03T10:20:00+01:00">ven 03 dicembre 2010</time></span> <a href="/my-super-post.html">My super title</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </article>
+            <hr/>
 
-    </section>
+        <ul class="pagination">
+                <li class="prev"><a href="/category/blog.html">&laquo;</a>
+                </li>
+                    <li class=""><a
+                            href="/category/blog.html">1</a></li>
+                    <li class="active"><a
+                            href="/category/blog2.html">2</a></li>
+                <li class="next disabled"><a href="#">&raquo;</a></li>
+        </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
