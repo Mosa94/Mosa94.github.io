@@ -1,0 +1,129 @@
+
+<html>
+    <head>
+        
+        <title>Allenamento! - microblog</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+div.example {
+  background-color: lightgrey;
+  content: 1vw;
+}
+
+@media screen and (min-width: 601px) {
+  div.example {
+    content: 1vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  div.example {
+    font-size: 30px;
+  }
+}
+</style>
+    </head>
+    <body>
+    <div>
+        Microblog:
+        <a href="/index">Home</a>
+        <a href="/login">Login</a>
+        <a href="/all">Timer</a>
+    </div>
+        <hr>
+        
+        
+        
+        
+
+<div class="example">
+<h1 id="exercise"></h1>
+<h1 id="seconds2go"></h1>
+<h2 id="intens"></h2>
+<hr>
+<h3 id="prox"></h3>
+<p id="debug"></p></div>
+<script>
+
+
+var exers = ["Iniziamo l'allenamento!","Riscaldamento","Piegamenti","Pausa", "Squat","Pausa", "Diretti sopra testa","Pausa", "Affondi","Pausa", "Crunch","Pausa", "Montanti","Pausa", "Swing","Pausa", "Skip","Pausa","Planck","Pausa Giro", "Piegamenti","Pausa", "Squat","Pausa", "Diretti sopra testa","Pausa", "Affondi","Pausa", "Crunch","Pausa", "Montanti","Pausa", "Swing","Pausa", "Skip","Pausa","Libretto","Pausa Giro","Piegamenti","Pausa", "Squat","Pausa", "Diretti sopra testa","Pausa", "Affondi","Pausa", "Crunch","Pausa", "Montanti","Pausa", "Swing","Pausa", "Skip","Pausa","Stella","Pausa Giro","Piegamenti","Pausa", "Squat","Pausa", "Diretti sopra testa","Pausa", "Affondi","Pausa", "Crunch","Pausa", "Montanti","Pausa", "Swing","Pausa", "Skip","Pausa","Reverse Crunch veloce","Pausa Giro","Stretching"]
+var qty_time = [5,10*60,60,10,60,10,60,10,60,10,60,10,60,10,60,10,60,10,60,2*60,40,20,40,20,40,20,40,20,40,20,40,20,40,20,40,20,40,2*60,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,2*60,20,40,20,40,20,40,20,40,20,40,20,40,20,40,20,40,20,2*60,10*60]
+var intensity = ["","","ENDURANCE","","ENDURANCE","","ENDURANCE","","ENDURANCE","","ENDURANCE","","ENDURANCE","","ENDURANCE","","ENDURANCE","","ENDURANCE","","ENDURANCE 60%","","ENDURANCE 60%","","ENDURANCE 60%","","ENDURANCE 60%","","ENDURANCE 60%","","ENDURANCE 60%","","ENDURANCE 60%","","ENDURANCE 60%","","ENDURANCE 60%","","INTERMEDIO 80%","","INTERMEDIO 80%","","INTERMEDIO 80%","","INTERMEDIO 80%","","INTERMEDIO 80%","","INTERMEDIO 80%","","INTERMEDIO 80%","","INTERMEDIO 80%","","INTERMEDIO 80%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","","ESPLOSIVO 100%","",""]
+var dates=[];
+
+var i;
+for (i = 0; i < qty_time.length; i++){
+if (i==0)
+dates.push(new Date().getTime()+ (qty_time[i]*1000))
+else
+dates.push(dates[i-1]+(qty_time[i]*1000))
+}
+
+curr_idx=0;
+var now = new Date().getTime();
+var target = now + qty_time[0]*1000+500;
+    var x = setInterval(function(){
+          var now = new Date().getTime();
+          var distance =target - now;
+          //document.getElementById("debug").innerHTML = distance + "";
+          var min = Math.floor((distance  % (1000 * 60 * 60)) / (1000 * 60));
+          if (min<0)
+          {
+              min=0;
+          }
+          var sec = Math.floor((distance % (1000 * 60)) / 1000);
+          if (sec<0)
+          {
+              sec=0;
+          }
+          distance_formatted = min + ":" + (sec + "").padStart(2,"0") + "s";
+        document.getElementById("exercise").innerHTML = exers[curr_idx] + "";
+        document.getElementById("seconds2go").innerHTML = distance_formatted
+        if (intensity[curr_idx]=="")
+        {
+            document.getElementById("intens").innerHTML = "Intensità: NA";
+        }
+        else
+        {
+            document.getElementById("intens").innerHTML = "Intensità: " + intensity[curr_idx];
+        }
+        if (curr_idx+1 <= exers.length-1)
+        {
+            if (intensity[curr_idx+1]=="")
+            {
+        document.getElementById("prox").innerHTML = "Next: " + exers[curr_idx+1] + ", Durata: " + qty_time[curr_idx+1];
+            }
+            else
+            {
+                document.getElementById("prox").innerHTML = "Next: " + exers[curr_idx+1] + ", Durata: " + qty_time[curr_idx+1] + "s, Intensità: " + intensity[curr_idx+1];
+            }
+        }
+        else
+        {
+        document.getElementById("prox").innerHTML = "Next: FINE";
+        }
+if (distance<=0)
+{
+    curr_idx+=1;
+    target = now + qty_time[curr_idx]*1000+500;
+
+      if (curr_idx > exers.length-1)
+      {
+    clearInterval(x);
+            document.getElementById("exercise").innerHTML = "FINITO";
+        document.getElementById("seconds2go").innerHTML = "BRAVO";
+    document.getElementById("intens").innerHTML = "";
+        document.getElementById("prox").innerHTML = "";
+
+  }
+}
+    },1000)
+
+</script>
+
+
+
+
+    </body>
+</html>
