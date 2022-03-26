@@ -175,3 +175,8 @@ body {
     display:block;
  }
 }
+.responsive {
+  float: right;
+  width: 50%;
+  height: auto;
+}
